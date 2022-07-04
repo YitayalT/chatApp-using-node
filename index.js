@@ -1,12 +1,19 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+const path = require("path");
+const http = require("http");
+const express = require("express");
 
-const publicPath = path.join(__dirname, 'public');
+const socketio = require("socket.io");
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+const publicPath = path.join(__dirname, "/public");
 app.use(express.static(publicPath));
-// app.all('', (req, res) => {
-//     res.sendFile('index');
-// })
-app.listen(5000, () => {
-    console.log('server is started at port 5000');
+io.on("connection", () => {
+  console.log("new websocket connection!");
+});
+
+server.listen(3000, () => {
+  console.log("server is started at port 3000");
 });
