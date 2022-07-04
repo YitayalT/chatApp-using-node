@@ -10,7 +10,11 @@
 <body>
     
     <h1>Chat app</h1>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <form id="message-form" action="#">
+        <input placeholder="message">
+        <button>send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
 </body>
 </html>
